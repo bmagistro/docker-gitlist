@@ -6,7 +6,7 @@ RUN apt-get update \
  && ln -s /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini \
  && mkdir /var/www/gitlist \
  && cd /var/www/gitlist \
- && curl -L https://github.com/klaussilveira/gitlist/releases/download/1.1.1/gitlist-1.1.1.zip -o gitlist.zip \
+ && curl -k -L https://github.com/klaussilveira/gitlist/releases/download/2.0.0/gitlist-2.0.0.zip -o gitlist.zip \
  && unzip gitlist.zip \
  && rm gitlist.zip \
  && mkdir cache \
@@ -14,7 +14,7 @@ RUN apt-get update \
  && a2enmod rewrite
 
 COPY apache-gitlist.conf /etc/apache2/sites-enabled/000-default.conf
-COPY gitlist.ini /var/www/gitlist/config.ini
+COPY gitlist.yml /var/www/gitlist/config/config.yml
 
 WORKDIR /var/www/gitlist
 
